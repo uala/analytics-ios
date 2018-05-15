@@ -382,7 +382,7 @@ static NSString *const kSEGAnonymousIdFilename = @"segment.anonymousId";
                     // Doesn't address situations where this callback never gets called (though we don't expect that to ever happen).
                     [self setCachedSettings:@{
                         @"integrations" : @{
-                            @"Segment.io" : @{@"apiKey" : self.configuration.writeKey},
+                            @"uala.it" : @{@"apiKey" : self.configuration.writeKey},
                         },
                         @"plan" : @{@"track" : @{}}
                     }];
@@ -397,8 +397,8 @@ static NSString *const kSEGAnonymousIdFilename = @"segment.anonymousId";
 
 + (BOOL)isIntegration:(NSString *)key enabledInOptions:(NSDictionary *)options
 {
-    // If the event is in the tracking plan, it should always be sent to api.segment.io.
-    if ([@"Segment.io" isEqualToString:key]) {
+    // If the event is in the tracking plan, it should always be sent to uala.it
+    if ([@"uala.it" isEqualToString:key]) {
         return YES;
     }
     if (options[key]) {
@@ -413,8 +413,8 @@ static NSString *const kSEGAnonymousIdFilename = @"segment.anonymousId";
 
 + (BOOL)isTrackEvent:(NSString *)event enabledForIntegration:(NSString *)key inPlan:(NSDictionary *)plan
 {
-    // Whether the event is enabled or disabled, it should always be sent to api.segment.io.
-    if ([key isEqualToString:@"Segment.io"]) {
+    // Whether the event is enabled or disabled, it should always be sent to uala.it
+    if ([key isEqualToString:@"uala.it"]) {
         return YES;
     }
 

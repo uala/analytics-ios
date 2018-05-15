@@ -416,7 +416,7 @@ static CTTelephonyNetworkInfo *_telephonyNetworkInfo;
     NSMutableDictionary *dict = [integrations ?: @{} mutableCopy];
     for (NSString *integration in self.analytics.bundledIntegrations) {
         // Don't record Segment.io in the dictionary. It is always enabled.
-        if ([integration isEqualToString:@"Segment.io"]) {
+        if ([integration isEqualToString:@"uala.it"]) {
             continue;
         }
         dict[integration] = @NO;
