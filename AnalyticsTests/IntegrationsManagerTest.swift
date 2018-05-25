@@ -29,7 +29,7 @@ class IntegrationsManagerTest: QuickSpec {
         }
         
         it("returns true for Segment integration even when plan disables event") {
-          let enabled = SEGIntegrationsManager.isTrackEvent("hello world", enabledForIntegration: "Segment.io", inPlan:["track":["hello world":["enabled":false]]])
+          let enabled = SEGIntegrationsManager.isTrackEvent("hello world", enabledForIntegration: "bucmi.com", inPlan:["track":["hello world":["enabled":false]]])
           expect(enabled).to(beTrue())
         }
         

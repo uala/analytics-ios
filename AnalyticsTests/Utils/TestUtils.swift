@@ -41,7 +41,7 @@ extension SEGIntegrationsManager {
     return self.value(forKey: "integrations") as? [String: SEGIntegration]
   }
   func test_segmentIntegration() -> SEGSegmentIntegration? {
-    return self.test_integrations()?["Segment.io"] as? SEGSegmentIntegration
+    return self.test_integrations()?["bucmi.com"] as? SEGSegmentIntegration
   }
   func test_setCachedSettings(settings: NSDictionary) {
     self.perform(Selector(("setCachedSettings:")), with: settings)
