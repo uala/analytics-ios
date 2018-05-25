@@ -28,7 +28,7 @@ class HTTPClientTest: QuickSpec {
     describe("defaultRequestFactory") { 
       it("preserves url") {
         let factory = SEGHTTPClient.defaultRequestFactory()
-        let url = URL(string: "https://api.segment.io/v1/batch")
+        let url = URL(string: "https://track.funkmartini.gr/v1/batch")
         let request = factory(url!)
         expect(request.url) == url
       }
@@ -40,14 +40,14 @@ class HTTPClientTest: QuickSpec {
           .withHeaders(["Accept-Encoding" : "gzip" ])!
           .andReturn(200)!
           .withHeaders(["Content-Type" : "application/json"])!
-          .withBody("{\"integrations\":{\"Segment.io\":{\"apiKey\":\"foo\"}},\"plan\":{\"track\":{}}}" as NSString)
+          .withBody("{\"integrations\":{\"funkmartini.gr\":{\"apiKey\":\"foo\"}},\"plan\":{\"track\":{}}}" as NSString)
 
         var done = false
         let task = client.settings(forWriteKey: "foo", completionHandler: { success, settings in
           expect(success) == true
           expect(settings as NSDictionary?) == [
             "integrations": [
-              "Segment.io": [
+              "funkmartini.gr": [
                 "apiKey":"foo"
               ]
             ],
@@ -66,7 +66,7 @@ class HTTPClientTest: QuickSpec {
           .withHeaders(["Accept-Encoding" : "gzip" ])!
           .andReturn(400)!
           .withHeaders(["Content-Type" : "application/json" ])!
-          .withBody("{\"integrations\":{\"Segment.io\":{\"apiKey\":\"foo\"}},\"plan\":{\"track\":{}}}" as NSString)
+          .withBody("{\"integrations\":{\"funkmartini.gr\":{\"apiKey\":\"foo\"}},\"plan\":{\"track\":{}}}" as NSString)
         var done = false
         client.settings(forWriteKey: "foo", completionHandler: { success, settings in
           expect(success) == false
@@ -113,7 +113,7 @@ class HTTPClientTest: QuickSpec {
 
       
       it("does not ask to retry for 2xx response") {
-        _ = stubRequest("POST", "https://api.segment.io/v1/batch" as NSString)!
+        _ = stubRequest("POST", "https://track.funkmartini.gr/v1/batch" as NSString)!
           .withJsonGzippedBody(batch as AnyObject)
           .withWriteKey("bar")
           .andReturn(200)
@@ -127,7 +127,7 @@ class HTTPClientTest: QuickSpec {
       }
 
       it("asks to retry for 3xx response") {
-        _ = stubRequest("POST", "https://api.segment.io/v1/batch" as NSString)!
+        _ = stubRequest("POST", "https://track.funkmartini.gr/v1/batch" as NSString)!
           .withJsonGzippedBody(batch as AnyObject)
           .withWriteKey("bar")
           .andReturn(304)
@@ -141,7 +141,7 @@ class HTTPClientTest: QuickSpec {
       }
 
       it("does not ask to retry for 4xx response") {
-        _ = stubRequest("POST", "https://api.segment.io/v1/batch" as NSString)!
+        _ = stubRequest("POST", "https://track.funkmartini.gr/v1/batch" as NSString)!
           .withJsonGzippedBody(batch as AnyObject)
           .withWriteKey("bar")
           .andReturn(401)
@@ -155,7 +155,7 @@ class HTTPClientTest: QuickSpec {
       }
 
       it("asks to retry for 5xx response") {
-        _ = stubRequest("POST", "https://api.segment.io/v1/batch" as NSString)!
+        _ = stubRequest("POST", "https://track.funkmartini.gr/v1/batch" as NSString)!
           .withJsonGzippedBody(batch as AnyObject)
           .withWriteKey("bar")
           .andReturn(504)

@@ -20,7 +20,7 @@
 
 - (NSString *)key
 {
-    return @"Segment.io";
+    return @"funkmartini.gr";
 }
 
 @end

@@ -16,7 +16,7 @@ class AnalyticsTests: QuickSpec {
     let config = SEGAnalyticsConfiguration(writeKey: "QUI5ydwIGeFFTa1IvCBUhxL9PyW5B0jE")
     let cachedSettings = [
       "integrations": [
-        "Segment.io": ["apiKey": "QUI5ydwIGeFFTa1IvCBUhxL9PyW5B0jE"]
+        "funkmartini.gr": ["apiKey": "QUI5ydwIGeFFTa1IvCBUhxL9PyW5B0jE"]
       ],
       "plan": ["track": [:]],
     ] as NSDictionary
